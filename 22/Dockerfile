@@ -1,8 +1,14 @@
 FROM        node:22-bookworm-slim
 
+ENV         BUN_INSTALL=/usr/local
+
 RUN         apt update \
-            && apt -y install ffmpeg iproute2 git sqlite3 python3 tzdata ca-certificates dnsutils build-essential make gcc g++ \
+            && apt -y install ffmpeg iproute2 git sqlite3 python3 tzdata ca-certificates dnsutils build-essential make gcc g++ curl unzip \
+            && curl -fsSL https://bun.sh/install -o /tmp/bun-install.sh \
+            && bash /tmp/bun-install.sh \
+            && rm /tmp/bun-install.sh \
             && npm -g install npm@latest \
+            && npm -g install pnpm \
             && useradd -m -d /home/container container
 
 USER        container
