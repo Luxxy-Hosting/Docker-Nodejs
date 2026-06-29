@@ -17,7 +17,4 @@ node -v
 echo -e "${CYAN}STARTUP /home/container: /start.sh ${RESET_COLOR}"
 # Run the Server
 # shellcheck disable=SC2086
-
-clear
-
 eval '/start.sh'
